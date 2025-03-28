@@ -1,10 +1,28 @@
 <div class="clasificaciones">
     <h3>Clasificaciones previas</h3>
   
-    <div *ngFor="let noticia of noticias" class="noticia">
-      <h4>{{ noticia.titulo }}</h4>
-      <p>{{ noticia.noticia }}</p>
-      <p><strong>{{ noticia.clasificacion }}</strong></p>
-    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Noticia</th>
+          <th>Clasificación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let noticia of noticias">
+          <td>{{ noticia.titulo }}</td>
+          <td>{{ noticia.noticia }}</td>
+          <td>
+            <span [ngClass]="{
+              'falso': noticia.clasificacion === 'FALSO',
+              'verdadero': noticia.clasificacion === 'VERDADERO'
+            }">
+              {{ noticia.clasificacion }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
   

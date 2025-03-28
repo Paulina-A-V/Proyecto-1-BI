@@ -1,15 +1,27 @@
 <div class="usuario-container">
     <h1>FAKE READER</h1>
-    <p class="fecha">Saturday, February 22, 2025</p>
   
-    <h2>USUARIO</h2>
+    <!-- INICIO -->
+    <div *ngIf="seccion === 'inicio'" class="menu-inicio">
+      <p>Si desea ver la clasificación de anteriores noticias</p>
+      <button (click)="irAClasificaciones()">Clasificaciones previas</button>
   
-    <p>Si desea ver la clasificación de anteriores noticias:</p>
-    <app-clasificaciones></app-clasificaciones>
+      <p>Si desea ver la predecir la veracidad de una noticia</p>
+      <button (click)="irAPrediccion()">Predecir</button>
+    </div>
   
-    <hr>
+    <!-- CLASIFICACIONES -->
+    <div *ngIf="seccion === 'clasificaciones'">
+      <button (click)="volverAInicio()">⬅ Volver</button>
+      <h2>Clasificaciones anteriores</h2>
+      <app-clasificaciones></app-clasificaciones>
+    </div>
   
-    <p>Si desea predecir la veracidad de una noticia:</p>
-    <app-prediccion></app-prediccion>
+    <!-- PREDICCIÓN -->
+    <div *ngIf="seccion === 'prediccion'">
+      <button (click)="volverAInicio()">⬅ Volver</button>
+      <h2>Predicción de noticias</h2>
+      <app-prediccion></app-prediccion>
+    </div>
   </div>
   

@@ -1,1 +1,14 @@
-<p>prediccion works!</p>
+<div class="prediccion">
+    <textarea [(ngModel)]="textoNoticia" rows="6" cols="60" placeholder="Pega aquí una noticia..."></textarea>
+    <br><br>
+    <button (click)="predecir()">Predecir</button>
+  
+    <div *ngIf="cargando">Procesando predicción...</div>
+  
+    <div *ngIf="resultado && probabilidad !== null">
+      <h3>Resultado:</h3>
+      <p><strong>Clasificación:</strong> {{ resultado }}</p>
+      <p><strong>Probabilidad:</strong> {{ (probabilidad * 100) | number:'1.0-2' }}%</p>
+    </div>
+  </div>
+  

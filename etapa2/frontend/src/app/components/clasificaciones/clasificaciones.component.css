@@ -1,0 +1,37 @@
+.clasificaciones {
+    margin-top: 20px;
+    text-align: left;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+  }
+  
+  th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    vertical-align: top;
+  }
+  
+  th {
+    background-color: #f0f0f0;
+    text-align: center;
+  }
+  
+  td {
+    text-align: justify;
+  }
+  
+  .falso {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .verdadero {
+    color: green;
+    font-weight: bold;
+  }
+  
