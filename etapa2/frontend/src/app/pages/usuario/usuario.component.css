@@ -1,0 +1,14 @@
+.usuario-container {
+    max-width: 700px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 30px;
+  }
+  
+  .fecha {
+    color: gray;
+    font-size: 0.9em;
+    margin-bottom: 20px;
+  }
+  

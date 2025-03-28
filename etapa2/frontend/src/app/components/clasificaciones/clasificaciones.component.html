@@ -1,0 +1,10 @@
+<div class="clasificaciones">
+    <h3>Clasificaciones previas</h3>
+  
+    <div *ngFor="let noticia of noticias" class="noticia">
+      <h4>{{ noticia.titulo }}</h4>
+      <p>{{ noticia.noticia }}</p>
+      <p><strong>{{ noticia.clasificacion }}</strong></p>
+    </div>
+  </div>
+  

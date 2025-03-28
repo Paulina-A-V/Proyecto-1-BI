@@ -2,7 +2,6 @@ import json
 import pandas as pd
 import unicodedata
 import sklearn
-from num2words import num2words
 import nltk
 from nltk.corpus import stopwords
 from nltk import word_tokenize

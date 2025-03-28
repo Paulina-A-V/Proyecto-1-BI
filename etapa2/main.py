@@ -30,6 +30,22 @@ pipeline = load(model_path)
 def read_root():
     return {"message": "Hello, World!"}
 
+def obtener_clasificaciones():
+    df = pd.read_csv("../fake_news.csv", sep=";")
+    df["clasificacion"] = df["Label"].apply(lambda x: "VERDADERO" if x == 1 else "FALSO")
+    noticias = df[["Titulo", "Descripcion", "clasificacion"]].rename(columns={
+        "Titulo": "titulo",
+        "Descripcion": "noticia"
+    })
+
+    return noticias.to_dict(orient="records")
+
+
+@app.get("/clasificaciones")
+def obtener_clasificaciones_endpoint():
+    return obtener_clasificaciones()
+
+
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: Optional[str] = None):
     return {"item_id": item_id, "q": q}
