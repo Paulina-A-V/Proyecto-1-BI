@@ -13,4 +13,9 @@ export class FakeNewsService {
   predict(text: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/predict`, { text });
   }
+
+  reentrenarModelo(titulos: string[], descripciones: string[], etiquetas: number[]): Observable<any> {
+    const data = {Titulo: titulos, Descripcion: descripciones, Label: etiquetas };
+    return this.http.post(`${this.apiUrl}/reentrenamiento`, data);
+  }
 }

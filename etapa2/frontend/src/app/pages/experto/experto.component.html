@@ -1,3 +1,26 @@
-<h2>FAKE READER - Experto</h2>
-<app-clasificaciones></app-clasificaciones>
-<app-reentrenamiento></app-reentrenamiento>
+<div class="experto-container">
+  <h1>FAKE READER</h1>
+
+  <!-- INICIO -->
+  <div *ngIf="seccion === 'inicio'" class="menu-inicio">
+    <p>Si desea ver la clasificación de anteriores noticias</p>
+    <button (click)="irAClasificaciones()">Clasificaciones previas</button>
+
+    <p>Si desea reentrenar el modelo</p>
+    <button (click)="irAReentrenamiento()">Reentrenar</button>
+  </div>
+
+  <!-- CLASIFICACIONES -->
+  <div *ngIf="seccion === 'clasificaciones'">
+    <button (click)="volverAInicio()">⬅ Volver</button>
+    <h2>Clasificaciones anteriores</h2>
+    <app-clasificaciones></app-clasificaciones>
+  </div>
+
+  <!-- REENTRENAMIENTO -->
+  <div *ngIf="seccion === 'reentrenamiento'">
+    <button (click)="volverAInicio()">⬅ Volver</button>
+    <h2>Reentrenamiento del Modelo</h2>
+    <app-reentrenamiento></app-reentrenamiento>
+  </div>
+</div>

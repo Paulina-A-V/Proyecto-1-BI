@@ -1,1 +1,32 @@
-<p>reentrenamiento works!</p>
+<div class="container">
+  <h2>Reentrenamiento del Modelo</h2>
+
+  <form (submit)="reentrenar($event)">
+    <label for="titulo">Título de la noticia:</label>
+    <input type="text" id="titulo" [(ngModel)]="titulo" name="titulo" required placeholder="Escribe el título aquí...">
+
+    <label for="descripcion">Descripción de la noticia:</label>
+    <textarea id="descripcion" [(ngModel)]="descripcion" name="descripcion" required placeholder="Escribe la noticia aquí..."></textarea>
+
+    <label for="label">Clasificación:</label>
+    <select id="label" [(ngModel)]="clasificacion" name="clasificacion" required>
+      <option [value]="1">Verdadero</option>
+      <option [value]="0">Falso</option>
+    </select>
+
+    <button type="submit" [disabled]="cargando">Reentrenar</button>
+  </form>
+
+  <!-- Mostrar mensaje de carga mientras se espera la respuesta -->
+  <p *ngIf="cargando" class="loading">Reentrenando el modelo... Por favor, espera.</p>
+
+  <p *ngIf="mensaje && !cargando" class="feedback">{{ mensaje }}</p>
+
+  <!-- Métricas actualizadas -->
+  <div *ngIf="precision !== null && recall !== null && f1Score !== null && !cargando" class="metrics">
+    <h3>Métricas del Modelo</h3>
+    <p><strong>Precisión:</strong> {{ precision }}</p>
+    <p><strong>Recall:</strong> {{ recall }}</p>
+    <p><strong>F1-Score:</strong> {{ f1Score }}</p>
+  </div>
+</div>
