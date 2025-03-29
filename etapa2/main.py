@@ -86,15 +86,15 @@ def reentrenar_modelo(data: ReentrenamientoModel):
     df = pd.DataFrame({'Descripcion': textos_combinados, 'Label': etiquetas_combinadas})
 
     # Dividir los datos en entrenamiento y prueba (80% entrenamiento, 20% prueba)
-    X_train, X_test, y_train, y_test = train_test_split(
-        df['Descripcion'], df['Label'], test_size=0.2, random_state=42, stratify=df['Label']
+    X_train_df, X_test_df, y_train, y_test = train_test_split(
+        df[['Descripcion']], df['Label'], test_size=0.2, random_state=42, stratify=df['Label']
     )
 
-    pipeline_copy = pipeline
-    pipeline_copy.fit(X_train, y_train)
+    pipeline_copy = load(model_path)
+    pipeline_copy.fit(X_train_df, y_train)
 
     # Realizar predicciones en el conjunto de prueba
-    y_pred = pipeline_copy.predict(X_test)
+    y_pred = pipeline_copy.predict(X_test_df)
 
     # Calcular las métricas de desempeño
     precision = precision_score(y_test, y_pred, average='weighted', zero_division=0)
