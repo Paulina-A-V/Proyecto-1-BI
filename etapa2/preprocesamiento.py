@@ -15,6 +15,7 @@ import re
 nltk.download('punkt')
 nltk.download('stopwords')
 
+# corregir caracteres especiales comunes
 
 mapa_reemplazo= {
     "√°": "a",
@@ -44,6 +45,7 @@ data = pd.read_csv("./fake_news.csv", sep=";")
 
 X_train = data[['Descripcion', 'Label']]
 
+# aplica las correcciones definidas en el diccionario
 
 def correct_common_replacements(text):
 
@@ -51,6 +53,7 @@ def correct_common_replacements(text):
         text = text.replace(wrong, right)
     return text
 
+# elimina caracteres no ASCII
 def remove_non_ascii(words):
     
     new_words = []
@@ -60,6 +63,8 @@ def remove_non_ascii(words):
           new_words.append(new_word)
     return new_words
 
+# convierte las palabras a minúsculas
+
 def to_lowercase(words):
 
     new_words = []
@@ -67,6 +72,8 @@ def to_lowercase(words):
         new_word = word.lower()
         new_words.append(new_word)
     return new_words
+
+# elimina signos de puntuación
 
 def remove_punctuation(words):
   
@@ -77,6 +84,7 @@ def remove_punctuation(words):
             new_words.append(new_word)
     return new_words
 
+# elimina números enteros
 def remove_integers(words):
   
     new_words = []
@@ -86,6 +94,7 @@ def remove_integers(words):
             new_words.append(new_word)
     return new_words
 
+# elimina stopwords
 def remove_stopwords(words, stopwords=stopwords.words('spanish')):
     new_words = []
     for word in words:
@@ -121,6 +130,8 @@ def lemmatize_verbs(words):
         lemma = lemmatizer.lemmatize(word, pos='v')
         lemmas.append(lemma)
     return lemmas
+
+#se definen funciones para reducir las palabras a su raíz
 
 def stem_and_lemmatize(words):
     stems = stem_words(words)
